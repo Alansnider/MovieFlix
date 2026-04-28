@@ -1,0 +1,47 @@
+[33mcommit ce4b7b71bb714def5c6106b7d99f7ea7433904ed[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Alan <aalantqr@gmail.com>
+Date:   Tue Apr 28 17:07:20 2026 -0300
+
+    chore: rename application.properties to yaml
+
+[33mcommit de2057f02149df48dcbb4a6c38d140625ec92a66[m
+Author: Alan <aalantqr@gmail.com>
+Date:   Tue Apr 28 17:07:14 2026 -0300
+
+    chore: add flyway migration for categories
+
+[33mcommit d163bec4d6be06da41b1dc3009d979f18c6d76be[m
+Author: Alan <aalantqr@gmail.com>
+Date:   Tue Apr 28 17:07:03 2026 -0300
+
+    feat: create Category service
+
+[33mcommit c21f3312b99ce5f00d5590086686510727cf48cf[m
+Author: Alan <aalantqr@gmail.com>
+Date:   Tue Apr 28 17:06:56 2026 -0300
+
+    feat: create Category repository
+
+[33mcommit 5ec3cd871a8aa411d3f12364d0e5f57525eebde7[m
+Author: Alan <aalantqr@gmail.com>
+Date:   Tue Apr 28 17:06:50 2026 -0300
+
+    feat: create Category entity
+
+[33mcommit 2200b4be01a08ee41bde662975ff0aec27bd37ff[m
+Author: Alan <aalantqr@gmail.com>
+Date:   Tue Apr 28 17:05:29 2026 -0300
+
+    feat: implement CategoryController
+
+[33mcommit 9538b12aae78a03a96ef35d753583ecb120202b1[m
+Author: Alan <aalantqr@gmail.com>
+Date:   Tue Apr 28 16:01:18 2026 -0300
+
+    feat: add CategoryService with CRUD operations
+
+[33mcommit 9e076fdd79edaf22f9bc6758f5267996aae90780[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Alan <aalantqr@gmail.com>
+Date:   Tue Apr 28 15:27:27 2026 -0300
+
+    Initial commit - MovieFlix API
