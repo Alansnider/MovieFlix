@@ -1,5 +1,7 @@
 package com.br.MovieFlix.MovieFlix.controller;
 
+import com.br.MovieFlix.MovieFlix.controller.request.CategoryRequest;
+import com.br.MovieFlix.MovieFlix.controller.response.CategoryResponse;
 import com.br.MovieFlix.MovieFlix.entity.Category;
 import com.br.MovieFlix.MovieFlix.service.CategoryService;
 import lombok.RequiredArgsConstructor;
@@ -17,24 +19,24 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-         @GetMapping
-        public ResponseEntity<List<Category>> findAll() {
+        @GetMapping
+        public ResponseEntity<List<CategoryResponse>> findAll() {
         return ResponseEntity.ok(categoryService.findAll());
         }
 
         @GetMapping("/{id}")
-        public ResponseEntity<Category> findById(@PathVariable Long id) {
+        public ResponseEntity<CategoryResponse> findById(@PathVariable Long id) {
             return ResponseEntity.ok(categoryService.findById(id));
         }
 
 
         @PostMapping
-        public ResponseEntity<Category> save (@RequestBody Category category){
-            return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.create(category));
+        public ResponseEntity<CategoryResponse> save (@RequestBody CategoryRequest request){
+            return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.create(request));
         }
 
         @PutMapping("/{id}")
-        public ResponseEntity<Category> alter (@PathVariable Long id, @RequestBody Category category){
+        public ResponseEntity<CategoryResponse> alter (@PathVariable Long id, @RequestBody Category category){
             return ResponseEntity.ok().body(categoryService.alter(id, category));
         }
 
