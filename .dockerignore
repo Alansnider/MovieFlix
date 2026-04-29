@@ -1,0 +1,39 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Maven
+target/
+.m2/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.jar
+*.log
+*.class
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Node
+node_modules/
+npm-debug.log
+
+# Test
+*.test
+*.spec
+coverage/
+

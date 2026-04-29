@@ -2,6 +2,7 @@ package com.br.MovieFlix.MovieFlix.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "category")
@@ -18,7 +19,7 @@ public class Category {
     @Column(length = 100, nullable = false)
     private String name;
 
-
-
+    @ManyToMany(mappedBy = "categories")
+    private Set<Movie> movies;
 
 }

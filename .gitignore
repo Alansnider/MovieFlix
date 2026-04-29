@@ -31,3 +31,32 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Environment Variables ###
+.env
+.env.local
+.env.*.local
+
+### Secrets ###
+*.key
+*.pem
+
+### OS ###
+.DS_Store
+Thumbs.db
+
+### IDE Generated ###
+*.log
+*.swp
+*.swo
+*~
+
+### Docker ###
+.docker/
+docker-compose.override.yml
+
+### Node (if used for frontend) ###
+node_modules/
+npm-debug.log
+yarn-error.log
+

@@ -1,0 +1,12 @@
+CREATE TABLE movie (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    release_date DATE,
+    rating NUMERIC,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+);
+
+CREATE INDEX idx_movie_name ON movie(name);
+
