@@ -1,142 +1,15 @@
-🎬 MovieFlix API
-
-API RESTful para gerenciamento de filmes, categorias e serviços de streaming, com autenticação via JWT e arquitetura em camadas utilizando Spring Boot 3.
-
-🚀 Tecnologias Utilizadas
-Java 17
-Spring Boot 3
-Spring Web
-Spring Data JPA
-Spring Security
-JWT (java-jwt 4.4.0)
-PostgreSQL
-Flyway
-Bean Validation
-Lombok
-OpenAPI / Swagger (springdoc)
-📌 Funcionalidades
-🎭 Categorias
-Criar categoria
-Listar categorias
-Buscar categoria por ID
-Remover categoria
-🎥 Filmes
-Criar filme
-Listar filmes
-Buscar filme por ID
-Atualizar filme
-Remover filme
-Buscar filmes por categoria
-📺 Streaming
-Criar serviço de streaming
-Listar serviços
-Buscar por ID
-Remover serviço
-👤 Usuários
-Registro de usuário
-Login com autenticação JWT
-🔐 Segurança
-Autenticação via JWT
-Proteção de rotas
-Password criptografado com BCrypt
-🧱 Arquitetura do Projeto
-Controller → Service → Repository → Database
-                    ↓
-             Security (JWT)
-                    ↓
-        Exception Handling (ControllerAdvice)
-⚙️ Como executar o projeto
-1. Clonar o repositório
-git clone https://github.com/seu-usuario/movieflix.git
+🎬 API do MovieFlixO MovieFlix é uma API RESTful robusta desenvolvida para o gerenciamento completo de um ecossistema de entretenimento, abrangendo filmes, categorias e plataformas de streaming. O projeto foca em segurança, escalabilidade e uma arquitetura profissional em camadas.🚀 Tecnologias e FerramentasO ecossistema do projeto foi construído com as melhores práticas do mercado:Núcleo: Java 17 e Spring Boot 3Persistência: Spring Data JPA e PostgreSQLMigrações: Flyway (versão de banco de dados)Segurança: Spring Security e JWT (Auth0)Documentação: OpenAPI 3/SwaggerUtilitários: Lombok & Bean Validation🏗️ Arquitetura do SistemaA API segue o padrão de Arquitetura em Camadas , garantindo separação de responsabilidades e facilidade de manutenção:Controlador: Porta de entrada, lida com as requisições HTTP.Serviço: Detém a regra de negócio e orquestração.Repositório: Interface de comunicação direta com o PostgreSQL.Segurança (Filtros): Intercepta requisições para validação de tokens JWT.Exception Handler: Gerenciamento global de erros para respostas padronizadas.📌 Funcionalidades Principais🎭 Gestão de ConteúdoFilmes: CRUD completo com filtros por categoria.Categorias: Organização sistemática do catálogo.Streaming: Cadastro de plataformas onde os títulos estão disponíveis.🔐 Segurança e AcessoRegistro e Login: Cadastro de novos usuários e autenticação.JWT: Emissão de tokens para sessões stateless .BCrypt: Criptografia de senhas antes da persistência no banco.🛠️ Como executar o projetoPré-requisitosJava 17 instalado.PostgreSQL rodando localmente ou via Docker.Maven (ou use o Maven Wrapper inclusive).Passo a PassoClonar o:Bashgit clone https://github.com/seu-usuario/movieflix.git
 cd movieflix
-2. Configurar o banco PostgreSQL
-
-Crie um banco:
-
-CREATE DATABASE movieflix;
-3. Configurar application.yaml
-spring:
+Configure o Banco de Dados: 
+Crie um banco chamado movieflixe ajuste as credenciais no arquivo src/main/resources/application.yaml:YAMLspring:
   datasource:
     url: jdbc:postgresql://localhost:5432/movieflix
-    username: postgres
-    password: postgres
-
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: validate
-
-  flyway:
-    enabled: true
-4. Rodar a aplicação
-./mvnw spring-boot:run
-
-ou
-
-mvn spring-boot:run
-🔐 Autenticação (JWT)
-🔑 Login
-POST /auth/login
-📥 Body
-{
+    username: seu_usuario
+    password: sua_senha
+Inicie a aplica:Bash./mvnw spring-boot:run
+📖 Documentação da APIUma vez que o aplicativo estiver rodando, você pode acessar a interface interativa do Swagger para testar todos os endpoints:🔗http://localhost:8080/swagger-ui.htmlExemplo de AutenticaçãoPara acessar rotas protegidas, primeiro faça o login:POST /auth/loginJSON{
   "email": "user@email.com",
-  "password": "123456"
+  "password": "123"
 }
-📤 Response
-{
-  "token": "eyJhbGciOiJIUzI1NiIs..."
-}
-🔒 Usar token
-
-Em requisições protegidas:
-
-Authorization: Bearer SEU_TOKEN
-📚 Documentação Swagger
-
-Após rodar o projeto:
-
-http://localhost:8080/swagger-ui.html
-🧪 Exemplos de Endpoints
-🎬 Movies
-GET /movies
-POST /movies
-GET /movies/{id}
-PUT /movies/{id}
-DELETE /movies/{id}
-GET /movies/category/{id}
-🎭 Categories
-GET /categories
-POST /categories
-GET /categories/{id}
-DELETE /categories/{id}
-📺 Streaming
-GET /streamings
-POST /streamings
-GET /streamings/{id}
-DELETE /streamings/{id}
-🛡️ Segurança
-Spring Security configurado com filtro JWT
-Senhas criptografadas com BCrypt
-Rotas protegidas por autenticação
-Stateless session
-⚠️ Validações e Exceptions
-Bean Validation (@NotNull, @NotBlank, etc.)
-Tratamento global de erros com @RestControllerAdvice
-Exception personalizada para login inválido
-🗂️ Migrations (Flyway)
-
-O banco é versionado automaticamente com Flyway:
-
-src/main/resources/db/migration
-📦 Dependências principais
-Spring Boot Starter Web
-Spring Boot Starter Data JPA
-Spring Boot Starter Security
-PostgreSQL Driver
-Flyway
-Lombok
-Java JWT
-Springdoc OpenAPI
-👨‍💻 Autor
-
-Desenvolvido como projeto de estudo backend Java com foco em arquitetura profissional e boas práticas.
+A API retornará um token. Utilize-o no cabeçalho das próximas requisições:
+Authorization: Bearer <SEU_TOKEN_AQUI>🧪 Endpoints Principais (Resumo)RecursoPonto finalDescriçãoFilmesGET /moviesLista todos os filmesFilmesPOST /moviesCadastrar um novo filme (Privado)CategoriasGET /categoriesLista todas as categoriasTransmissãoGET /streamingsLista contém cadastradosAut.POST /auth/registerCria uma nova conta🤝 ContribuiçãoFaça um Fork do projeto.Crie um Branch para seu recurso ( git checkout -b feature/NovaFeature).Dê um Commit nas suas alterações ( git commit -m 'Add NovaFeature').Faça um Push para Branch ( git push origin feature/NovaFeature).Abra um Pull Request .👨‍💻 AutorDesenvolvido por Seu Nome –Seu LinkedIn–Seu e-mailEste projeto é para fins de estudo e portfólio.
