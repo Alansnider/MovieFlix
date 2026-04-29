@@ -3,6 +3,7 @@ package com.br.MovieFlix.MovieFlix.service;
 import com.br.MovieFlix.MovieFlix.controller.request.StreamingRequest;
 import com.br.MovieFlix.MovieFlix.controller.response.StreamingResponse;
 import com.br.MovieFlix.MovieFlix.entity.Streaming;
+import com.br.MovieFlix.MovieFlix.mapper.StreamingMapper;
 import com.br.MovieFlix.MovieFlix.repository.StreamingRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -19,14 +20,16 @@ public class StreamingService {
 
     public List<StreamingResponse> list(){
         return streamingRepository.findAll()
-                .stream().map(streamingMapper::toStreaming)
+                .stream()
+                .map(streamingMapper::toStreamingResponse)
                 .toList();
     }
 
-    public List<StreamingResponse> findById(Long id){
+    public StreamingResponse findById(Long id) {
         Streaming streaming = streamingRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Streaming not found");
-                return streamingMapper.toStreaming(streaming);
+                .orElseThrow(() -> new EntityNotFoundException("Streaming not found with id: " + id));
+
+        return streamingMapper.toStreamingResponse(streaming);
     }
 
     public StreamingResponse update(Long id, StreamingRequest streamingRequest){
@@ -34,11 +37,11 @@ public class StreamingService {
                 .orElseThrow(() -> new EntityNotFoundException("Streaming not found"));
         existing.setName(streamingRequest.name());
         Streaming streaming = streamingRepository.save(existing);
-        return streamingMapper.toStreaming(streaming);
+        return streamingMapper.toStreamingResponse(streaming);
     }
 
     public StreamingResponse create(StreamingRequest streamingRequest){
-        Streaming create = streamingRepository.save(streamingMapper.toStreaming(request));
+        Streaming create = streamingRepository.save(streamingMapper.toStreaming(streamingRequest));
                 return streamingMapper.toStreamingResponse(create);
     }
 
