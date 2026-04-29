@@ -1,6 +1,7 @@
 package com.br.MovieFlix.MovieFlix.controller;
 
 import com.br.MovieFlix.MovieFlix.entity.Streaming;
+import com.br.MovieFlix.MovieFlix.service.StreamingService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
