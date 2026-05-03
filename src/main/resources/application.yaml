@@ -28,6 +28,37 @@ spring:
       name: admin
       password: admin
 
+    # CORS Configuration
+    cors:
+      allowed-origins: "http://localhost:3000,http://localhost:4200"
+      allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
+      allowed-headers: "*"
+      expose-headers: "Authorization,X-Total-Count"
+      allow-credentials: true
+      max-age: 3600
+
+    # Session Configuration
+    session:
+      timeout: 1h
+      persistent: false
+      cookie:
+        secure: false  # true em produção com HTTPS
+        http-only: true
+        same-site: LAX
+
+    # Headers Security
+    headers:
+      cache-control:
+        enabled: true
+      content-security-policy: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
+      frame-options: DENY
+      xss-protection: "1; mode=block"
+      x-content-type-options: nosniff
+
+    # Filter Configuration
+    filter:
+      order: 5
+
 server:
   port: 8080
   servlet:

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "movie")
+@Table(name = "/movieflix/movie")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +23,7 @@ public class Movie {
      private Long id;
      private String title;
      private String description;
-     private LocalDate release_date;
+     private LocalDate releaseDate;
      private double rating;
 
      @CreationTimestamp

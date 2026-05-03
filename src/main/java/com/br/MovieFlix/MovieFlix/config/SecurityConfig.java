@@ -1,6 +1,5 @@
 package com.br.MovieFlix.MovieFlix.config;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,47 +10,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfig {
 
-    @Value("${spring.security.cors.allowed-origins:http://localhost:3000,http://localhost:4200}")
-    private String allowedOrigins;
-
-    @Value("${spring.security.cors.allowed-methods:GET,POST,PUT,DELETE,OPTIONS}")
-    private String allowedMethods;
-
-    @Value("${spring.security.cors.allowed-headers:*}")
-    private String allowedHeaders;
-
-    /**
-     * Configurar CORS
-     */
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(allowedOrigins.split(",")));
-        configuration.setAllowedMethods(Arrays.asList(allowedMethods.split(",")));
-        configuration.setAllowedHeaders(Arrays.asList(allowedHeaders.split(",")));
-        configuration.setExposedHeaders(Arrays.asList("Authorization", "X-Total-Count"));
-        configuration.setAllowCredentials(true);
-        configuration.setMaxAge(3600L);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
-
-    /**
-     * Configurar Segurança HTTP
-     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -118,9 +82,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    /**
-     * Password Encoder
-     */
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

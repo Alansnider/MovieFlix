@@ -33,7 +33,7 @@ public class StreamingController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(streamingService.create(create));
     }
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<StreamingResponse> update(@Valid @RequestBody StreamingRequest request,@PathVariable Long id) {
         return ResponseEntity.ok(streamingService.update(id, request));
 
