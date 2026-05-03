@@ -6,7 +6,6 @@ import com.br.MovieFlix.MovieFlix.controller.response.CategoryResponse;
 import com.br.MovieFlix.MovieFlix.controller.response.MovieResponse;
 import com.br.MovieFlix.MovieFlix.entity.Movie;
 import com.br.MovieFlix.MovieFlix.service.MovieService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +31,7 @@ public class MovieController {
     }
 
     @PostMapping
-    public ResponseEntity<MovieResponse> save(@Valid @RequestBody MovieRequest request) {
+    public ResponseEntity<MovieResponse> save( @RequestBody MovieRequest request) {
         Movie savedMovie = movieService.save(request);
         MovieResponse response = MovieResponse.fromEntity(savedMovie);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -41,9 +40,9 @@ public class MovieController {
     @PutMapping("/{id}")
     public ResponseEntity<CategoryResponse> update(
             @RequestBody CategoryRequest request,
-            @Valid @PathVariable Long id) {
+             @PathVariable Long id) {
 
-        return ResponseEntity.ok(movieService.update(request, id));
+        return ResponseEntity.ok(movieService.update(request,id));
     }
 
     @DeleteMapping("/{id}")

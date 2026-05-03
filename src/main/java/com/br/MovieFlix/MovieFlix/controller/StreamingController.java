@@ -29,12 +29,12 @@ public class StreamingController {
     }
 
     @PostMapping
-    public ResponseEntity<StreamingResponse> save(@Valid @RequestBody StreamingRequest create) {
+    public ResponseEntity<StreamingResponse> save( @RequestBody StreamingRequest create) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(streamingService.create(create));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<StreamingResponse> update(@Valid @RequestBody StreamingRequest request,@PathVariable Long id) {
+    public ResponseEntity<StreamingResponse> update( @RequestBody StreamingRequest request,@PathVariable Long id) {
         return ResponseEntity.ok(streamingService.update(id, request));
 
     }
